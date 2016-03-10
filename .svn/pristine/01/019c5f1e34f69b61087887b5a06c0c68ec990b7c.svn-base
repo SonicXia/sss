@@ -1,0 +1,205 @@
+package com.dgaotech.dgfw.domain;
+
+import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class OrderVO {
+
+	/**
+	 * 手机号
+	 */
+	private String phoneNo;
+
+	/**
+	 * 发车时间
+	 */
+	private Date trainDate;
+
+	/**
+	 * 验证码
+	 */
+	private String verifyCode;
+
+	/**
+	 * 座位号
+	 */
+	private String seatNo;
+
+	/**
+	 * 车次号
+	 */
+	private String trainNo;
+
+	/**
+	 * 支付金额
+	 */
+	private double payAmt;
+
+	/**
+	 * 车厢号
+	 */
+	private String coachNo;
+
+	/**
+	 * 配送方式
+	 */
+	private int deliverType;
+	
+	/**
+	 * 车次始到站描述
+	 */
+	private String stationDesc;
+
+	/**
+	 * 商品总金额
+	 */
+	private double totalAmt;
+
+	/**
+	 * 支付方式
+	 */
+	private int payMethod;
+	
+	/**
+	 * 是否是登录客户
+	 */
+	private boolean isLoginCustomer;
+	
+	/**
+	 * 
+	 */
+	private String bureau;
+
+	/**
+	 * 订单商品列表
+	 */
+	private List<OrderProductVO> productList;
+
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+
+	public Date getTrainDate() {
+		return trainDate;
+	}
+
+	public void setTrainDate(Date trainDate) {
+		this.trainDate = trainDate;
+	}
+
+	public String getVerifyCode() {
+		return verifyCode;
+	}
+
+	public void setVerifyCode(String verifyCode) {
+		this.verifyCode = verifyCode;
+	}
+
+	public String getSeatNo() {
+		return seatNo;
+	}
+
+	public void setSeatNo(String seatNo) {
+		this.seatNo = seatNo;
+	}
+
+	public String getTrainNo() {
+		return trainNo;
+	}
+
+	public void setTrainNo(String trainNo) {
+		this.trainNo = trainNo;
+	}
+
+	public double getPayAmt() {
+		return payAmt;
+	}
+
+	public void setPayAmt(double payAmt) {
+		this.payAmt = payAmt;
+	}
+
+	public String getCoachNo() {
+		return coachNo;
+	}
+
+	public void setCoachNo(String coachNo) {
+		this.coachNo = coachNo;
+	}
+
+	public int getDeliverType() {
+		return deliverType;
+	}
+
+	public void setDeliverType(int deliverType) {
+		this.deliverType = deliverType;
+	}
+
+	public String getStationDesc() {
+		return stationDesc;
+	}
+
+	public void setStationDesc(String stationDesc) {
+		this.stationDesc = stationDesc;
+	}
+
+	public double getTotalAmt() {
+		return totalAmt;
+	}
+
+	public void setTotalAmt(double totalAmt) {
+		this.totalAmt = totalAmt;
+	}
+
+	public int getPayMethod() {
+		return payMethod;
+	}
+
+	public void setPayMethod(int payMethod) {
+		this.payMethod = payMethod;
+	}
+
+	public boolean isLoginCustomer() {
+		return isLoginCustomer;
+	}
+
+	public void setLoginCustomer(boolean isLoginCustomer) {
+		this.isLoginCustomer = isLoginCustomer;
+	}
+
+	public String getBureau() {
+		return bureau;
+	}
+
+	public void setBureau(String bureau) {
+		this.bureau = bureau;
+	}
+
+	public List<OrderProductVO> getProductList() {
+		return productList;
+	}
+
+	public void setProductList(List<OrderProductVO> productList) {
+		this.productList = productList;
+	}
+
+	/**
+	 * 获取车厢大小号描述
+	 * @return
+	 */
+	public String getTrainSubNoDesc(){
+		if(Integer.valueOf(this.coachNo).intValue() > 8){
+			return "大号";
+		}
+		
+		return "小号";
+	}
+
+}

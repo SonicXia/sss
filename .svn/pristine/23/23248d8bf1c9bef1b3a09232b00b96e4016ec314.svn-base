@@ -1,0 +1,57 @@
+package com.dgaotech.dgfw.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+/**
+ * 订单列表App前台传值对象
+ * @author yumingt
+ *
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class OrderListVO {
+	
+	/**
+	 * 客户电话号码
+	 */
+	private String phoneNo;
+	
+	/**
+	 * 订单列表开始索引
+	 */
+	private int startIndex;
+	
+	/**
+	 * 订单列表结束索引
+	 */
+	private int endIndex;
+	
+	/**
+	 * 每页显示条数
+	 */
+	private int pageCount;
+	
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+	public int getStartIndex() {
+		return startIndex;
+	}
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+	public int getEndIndex() {
+		return endIndex;
+	}
+	public void setEndIndex(int endIndex) {
+		this.endIndex = endIndex;
+	}
+	public int getPageCount() {
+		return pageCount;
+	}
+	public void setPageCount(int pageCount) {
+		this.pageCount = pageCount;
+	}
+}
