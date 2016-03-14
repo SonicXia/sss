@@ -14,7 +14,7 @@ public class TrainInfoDaoImpl extends BaseDao implements ITrainInfoDao{
 	public List getAll() {
 		String sql = 
 				"SELECT trainNo, isSingle, lineNo, isStartFlag, bureau, startStation,"
-				+ " endStation, startDate, endDate, spanDays FROM train_info";			
+				+ " endStation, startDate, endDate, spanDays FROM train_info ORDER BY trainNo";			
 		return this.jdbctemplate.queryForList(sql); 
 	}
 }
