@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
-import com.dgaotech.dgfw.service.RechargeService;
+import com.dgaotech.dgfw.service.CategoryListService;
 /**
  * 
  * @author xiaxf
@@ -21,33 +21,18 @@ import com.dgaotech.dgfw.service.RechargeService;
  */
 @ResponseBody
 @RestController
-public class RechargeController {
+public class CategoryListController {
 	
 	@Autowired
-	private RechargeService rechargeService;
+	private CategoryListService categoryListService;
 	
-	/***
-	 * Restful 方式得到两个接口：
-	 * 1. 完全调出充值信息
-	 * 2. 根据用户mobile号得出充值信息
-	 * @param mobile
-	 * @return
-	 * @throws Exception
-	 */	
 	  @ResponseBody
-	  @RequestMapping(value = "/mobile.service/rechargeinfo", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+	  @RequestMapping(value = "/mobile.service/getCategory", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 	  public Map<String, Object> rechargeinfo(@RequestBody JSONObject jsoncode, HttpServletResponse response) throws Exception{
 		  response.setHeader("Access-Control-Allow-Origin", "*");
 		  response.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,POST");
 		  response.setHeader("Access-Control-Allow-Headers", "Origin,Accept,Content-Type*,X-Requested-With");
 		  
-		  String pageNow = jsoncode.getString("pageNow");
-		  String pageSize = jsoncode.getString("pageSize");
-		  String mobile = jsoncode.getString("mobile");
-		  if (mobile.equals("")){
-			  return  rechargeService.getAll(pageNow, pageSize);
-		  }else{
-			  return rechargeService.getByMobile(pageNow, pageSize, mobile);
-		  }
+		  return  categoryListService.getAllCategoryListFromProductInfo();	  
 	  }
 }

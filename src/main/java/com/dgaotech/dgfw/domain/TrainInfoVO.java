@@ -30,6 +30,10 @@ public class TrainInfoVO {
 	private String endDate;
 	//跨天数
 	private int spanDays;
+	//是否可【提前订餐】
+	private int preOrderable;
+	//是否可【列车点餐】
+	private int onlineOrderable;
 	
 	private List<TrainInfoVO> trainInfoList;
 
@@ -119,6 +123,22 @@ public class TrainInfoVO {
 
 	public void setTrainInfoList(List<TrainInfoVO> trainInfoList) {
 		this.trainInfoList = trainInfoList;
+	}
+
+	public int getOnlineOrderable() {
+		return onlineOrderable;
+	}
+
+	public void setOnlineOrderable(int onlineOrderable) {
+		this.onlineOrderable = onlineOrderable;
+	}
+
+	public int getPreOrderable() {
+		return preOrderable;
+	}
+
+	public void setPreOrderable(int preOrderable) {
+		this.preOrderable = preOrderable;
 	}
 
 	

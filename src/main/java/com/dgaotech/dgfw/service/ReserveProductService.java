@@ -6,6 +6,6 @@ import java.util.Map;
  * @author xiaxf
  *
  */
-public interface TrainInfoService {
-	public Map<String, Object> getTrainInfo(int flag);
+public interface ReserveProductService {
+	public Map<String, Object> getByPreSale();
 }

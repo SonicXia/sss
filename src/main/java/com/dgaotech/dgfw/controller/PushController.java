@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,15 +34,21 @@ public class PushController {
 	 * 根据不同类型推送消息服务
 	 * 
 	 * @param type
-	 *  推送类型          0-->to all,1-->by alias,2-->by tag
-	 * @param params 
-	 * 推送参数 {"msg":"消息内容","alias":"消息别名,多个用英文逗号分隔","tag":"消息tag,多个用英文逗号分隔"}
+	 *            推送类型 0-->to all,1-->by alias,2-->by tag
+	 * @param params
+	 *            推送参数 {"msg":"消息内容","alias":"消息别名,多个用英文逗号分隔","tag":
+	 *            "消息tag,多个用英文逗号分隔"}
 	 * @return
 	 * @throws Exception
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/push/{type}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public JSONObject push(@PathVariable("type") int type, @RequestBody JSONObject params) throws Exception {
+	public JSONObject push(@PathVariable("type") int type, @RequestBody JSONObject params, HttpServletResponse response)
+			throws Exception {
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,POST");
+		response.setHeader("Access-Control-Allow-Headers", "Origin,Accept,Content-Type*,X-Requested-With");
+
 		JSONObject obj = new JSONObject();
 		String msg = params.getString("msg");
 		String alias = params.getString("alias");
